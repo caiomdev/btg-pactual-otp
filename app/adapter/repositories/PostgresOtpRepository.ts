@@ -9,6 +9,16 @@ export class PostgresOtpRepository implements OtpRepository {
     return this.toEntity(insert)
   }
 
+  async findOtpByEmail(email: string): Promise<OTP|null> {
+    const opt = await OtpModel.findBy({ email })
+
+    if (!opt) {
+      return null
+    }
+
+    return this.toEntity(opt)
+  }
+
   private toEntity(model: OtpModel): OTP {
     return new OTP(
       model.id,
