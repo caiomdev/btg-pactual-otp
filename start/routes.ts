@@ -9,8 +9,15 @@
 
 import router from '@adonisjs/core/services/router'
 
+const OtpController = () => import("#controllers/otps_controller")
+
 router.get('/', async () => {
   return {
     hello: 'world',
   }
 })
+
+router.group(() => {
+  router.post('otp', [OtpController, 'store'])
+})
+.prefix('/api')
