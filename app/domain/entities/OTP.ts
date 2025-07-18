@@ -1,6 +1,6 @@
 export class OTP {
   constructor(
-    public readonly id: string,
+    public readonly id: number,
     public readonly code: string,
     public readonly email: string,
     public readonly expiresAt: Date,

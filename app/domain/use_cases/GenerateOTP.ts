@@ -1,8 +1,8 @@
 import { createHmac } from "crypto"
 import env from "#start/env"
-import { OTP } from "#entities/OTP"
-import { OtpRepository } from "#repositories/OtpRepository"
-import { GenerateOtpDTO } from "#use_cases/GenerateOtpDTO"
+import { OTP } from "#domain/entities/OTP"
+import { OtpRepository } from "#domain/repositories/OtpRepository"
+import { GenerateOtpDTO } from "#domain/use_cases/GenerateOtpDTO"
 
 export class GenerateOTP {
   constructor(readonly otpRepository: OtpRepository) {}
@@ -11,7 +11,7 @@ export class GenerateOTP {
     const expirationInSeconds = Number(env.get("OTP_EXPIRATION", 300))
     const expiresAt = new Date(Date.now() + expirationInSeconds * 1000)
     const code = this.generateToken(data.email, expiresAt)
-    const otp = new OTP('', code, data.email, expiresAt)
+    const otp = new OTP(1, code, data.email, expiresAt)
 
     await this.otpRepository.save(otp)
 

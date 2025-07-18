@@ -1,13 +1,13 @@
 import { test } from '@japa/runner'
 
-import { OTP } from "#entities/OTP"
-import { GenerateOTP } from "#use_cases/GenerateOTP"
+import { OTP } from "#domain/entities/OTP"
+import { GenerateOTP } from "#domain/use_cases/GenerateOTP"
 
 class MockOtpRepository {
   public data: OTP[] = []
 
   async save(otp: OTP): Promise<OTP> {
-    const currentOtp = new OTP("1", otp.code, otp.email, otp.expiresAt)
+    const currentOtp = new OTP(1, otp.code, otp.email, otp.expiresAt)
     this.data.push(currentOtp)
 
     return currentOtp
