@@ -10,7 +10,11 @@ export class PostgresOtpRepository implements OtpRepository {
   }
 
   async findOtpByEmail(email: string): Promise<OTP|null> {
-    const opt = await OtpModel.findBy({ email })
+    const opt = await OtpModel
+      .query()
+      .where({ email })
+      .orderBy('createdAt', 'desc')
+      .first()
 
     if (!opt) {
       return null
