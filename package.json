@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit"
   },
   "imports": {
-    "#adapter/*": "./app/adapter/*.js",
+    "#interface/*": "./app/interface/*.js",
     "#domain/*": "./app/domain/*.js",
     "#application/*": "./app/application/*.js",
     "#controllers/*": "./app/controllers/*.js",
