@@ -1,5 +1,5 @@
 import { OtpRepository } from "#domain/repositories/OtpRepository"
-import { ValidateOtpDTO } from "#domain/use_cases/ValidateOtpDTO"
+import { ValidateOtpDTO } from "#application/use_cases/ValidateOtpDTO"
 
 export class ValidateOtp {
   constructor(readonly otpRepository: OtpRepository) {}

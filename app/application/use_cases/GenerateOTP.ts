@@ -2,7 +2,7 @@ import { createHmac } from "crypto"
 import env from "#start/env"
 import { OTP } from "#domain/entities/OTP"
 import { OtpRepository } from "#domain/repositories/OtpRepository"
-import { GenerateOtpDTO } from "#domain/use_cases/GenerateOtpDTO"
+import { GenerateOtpDTO } from "#application/use_cases/GenerateOtpDTO"
 
 export class GenerateOTP {
   constructor(readonly otpRepository: OtpRepository) {}

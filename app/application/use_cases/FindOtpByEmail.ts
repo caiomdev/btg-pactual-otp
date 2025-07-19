@@ -1,6 +1,6 @@
 import { OTP } from "#domain/entities/OTP"
 import { OtpRepository } from "#domain/repositories/OtpRepository"
-import { FindOtpDTO } from "#domain/use_cases/FindOtpByEmailDTO"
+import { FindOtpDTO } from "#application/use_cases/FindOtpByEmailDTO"
 
 export class FindOtpByEmail {
   constructor(readonly otpRepository: OtpRepository) {}
