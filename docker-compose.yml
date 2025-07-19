@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: btg-pactual-otp
+    ports:
+      - '${PORT}:${PORT}'
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      - .:/home/node/app
+    command: sh -c "npm install && node ace migration:run && node ace serve --watch"
+
+  postgres:
+    image: postgres:15
+    container_name: pg-opt-container
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
