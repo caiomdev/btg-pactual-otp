@@ -1,5 +1,5 @@
 import { PostgresOtpRepository } from '#adapter/repositories/PostgresOtpRepository'
-import { FindOtp } from '#domain/use_cases/FindOtp'
+import { FindOtpByEmail } from '#domain/use_cases/FindOtpByEmail'
 import { GenerateOTP } from '#domain/use_cases/GenerateOTP'
 import type { HttpContext } from '@adonisjs/core/http'
 import logger from '@adonisjs/core/services/logger'
@@ -11,7 +11,7 @@ export default class OtpController {
     const email = request.input('email')
 
     const pgOtpRepo = new PostgresOtpRepository()
-    const findByEmail = new FindOtp(pgOtpRepo)
+    const findByEmail = new FindOtpByEmail(pgOtpRepo)
 
     const alreadyExist = await findByEmail.execute({ email })
 
