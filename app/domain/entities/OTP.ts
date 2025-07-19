@@ -5,7 +5,7 @@ export class OTP {
     public readonly email: string,
     public readonly expiresAt: Date,
     public readonly createdAt: Date = new Date(),
-    public readonly usedAt?: Date
+    public usedAt?: Date
   ) {}
 
   isExpired(): boolean {
@@ -14,5 +14,9 @@ export class OTP {
 
   isUsed(): boolean {
     return this.usedAt !== undefined
+  }
+
+  setUsedAt(date: Date) {
+    this.usedAt = date
   }
 }
