@@ -8,7 +8,7 @@ export class FindOtpByEmail {
   async execute(data: FindOtpDTO): Promise<OTP|null> {
     const otp = await this.otpRepository.findOtpByEmail(data.email)
 
-    if (!otp || otp.isExpired()) {
+    if (!otp || otp.isExpired() || otp.isUsed()) {
       return null
     }
 
