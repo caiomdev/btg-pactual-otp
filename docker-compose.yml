@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: .
-    container_name: btg-pactual-otp
+    container_name: btg-pactual-otp-app
     ports:
       - '${PORT}:${PORT}'
     env_file:
@@ -15,7 +15,7 @@ services:
 
   postgres:
     image: postgres:15
-    container_name: pg-opt-container
+    container_name: btg-pactual-otp-db
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}
