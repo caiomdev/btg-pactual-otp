@@ -1,9 +1,9 @@
 import { test } from '@japa/runner'
 
 import { OTP } from "#domain/entities/OTP"
-import { GenerateOTP } from "#domain/use_cases/GenerateOTP"
-import { FindOtpByEmail } from "#domain/use_cases/FindOtpByEmail"
-import { ValidateOtp } from '#domain/use_cases/ValidateOtp'
+import { GenerateOTP } from "#application/use_cases/GenerateOTP"
+import { FindOtpByEmail } from "#application/use_cases/FindOtpByEmail"
+import { ValidateOtp } from '#application/use_cases/ValidateOtp'
 
 class MockOtpRepository {
   public data: OTP[] = []
