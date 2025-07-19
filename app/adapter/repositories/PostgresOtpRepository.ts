@@ -23,6 +23,30 @@ export class PostgresOtpRepository implements OtpRepository {
     return this.toEntity(opt)
   }
 
+  async findOtpByEmailAndCode(email: string, code: string): Promise<OTP|null> {
+    const opt = await OtpModel
+      .query()
+      .where({ email, code })
+      .orderBy('createdAt', 'desc')
+      .first()
+
+    if (!opt) {
+      return null
+    }
+
+    return this.toEntity(opt)
+  }
+
+  async markAsUsed(code: string): Promise<void> {
+    const opt = await OtpModel
+      .query()
+      .where({ code })
+      .first()
+
+    opt?.merge({ usedAt: DateTime.fromJSDate(new Date()) })
+    opt?.save()
+  }
+
   private toEntity(model: OtpModel): OTP {
     return new OTP(
       model.id,
@@ -30,6 +54,7 @@ export class PostgresOtpRepository implements OtpRepository {
       model.email,
       model.expiresAt.toJSDate(),
       model.createdAt.toJSDate(),
+      model.usedAt?.toJSDate()
     )
   }
 
@@ -38,7 +63,8 @@ export class PostgresOtpRepository implements OtpRepository {
       code: otp.code,
       email: otp.email,
       createdAt: DateTime.fromJSDate(otp.createdAt),
-      expiresAt: DateTime.fromJSDate(otp.expiresAt)
+      expiresAt: DateTime.fromJSDate(otp.expiresAt),
+      usedAt: otp.usedAt !== undefined ? DateTime.fromJSDate(otp.usedAt) : undefined
     }
   }
 }
