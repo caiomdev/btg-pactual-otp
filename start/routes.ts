@@ -19,5 +19,6 @@ router.get('/', async () => {
 
 router.group(() => {
   router.post('otp', [OtpController, 'store'])
+  router.post('otp/validate', [OtpController, 'validate'])
 })
 .prefix('/api')
