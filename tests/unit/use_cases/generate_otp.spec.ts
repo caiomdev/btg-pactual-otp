@@ -26,13 +26,14 @@ class MockOtpRepository {
 }
 
 test.group('Use cases', () => {
-  test('Generate an OTP and validate if it has not expired', async ({ assert }) => {
+  test('should generate an OTP and validate if it has not expired', async ({ assert }) => {
     const repo = new MockOtpRepository()
     const useCase = new GenerateOTP(repo)
     const result = await useCase.execute({ email: "caiomdev@gmail.com" })
 
     assert.isBelow(result.createdAt, result.expiresAt)
     assert.isFalse(result.isExpired())
+    assert.isFalse(result.isUsed())
   })
 
   test('should find an OTP by email', async ({ assert }) => {
