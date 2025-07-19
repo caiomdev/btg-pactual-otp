@@ -18,4 +18,7 @@ export default class OtpModel extends BaseModel {
 
   @column.dateTime({ columnName: 'expiresAt' })
   declare expiresAt: DateTime
+
+  @column.dateTime({ columnName: 'usedAt' })
+  declare usedAt: DateTime
 }

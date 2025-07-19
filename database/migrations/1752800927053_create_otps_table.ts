@@ -8,8 +8,9 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('code', 6).notNullable()
       table.string('email', 40).notNullable()
-      table.dateTime('expiresAt').notNullable()
       table.dateTime('createdAt').defaultTo(this.now()).notNullable()
+      table.dateTime('expiresAt').notNullable()
+      table.dateTime('usedAt').nullable()
     })
   }
 
