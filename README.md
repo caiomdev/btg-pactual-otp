@@ -48,9 +48,14 @@ DB_DATABASE=otp_db           # Nome do banco de dados
 ```
 > ⚠️ **Importante**:  
 > O valor de `DB_HOST` deve **permanecer fixo** como `btg-pactual-otp-db`, pois este é o nome do container do banco definido no `docker-compose.yml`.
-> Utilize o comando ```node ace generate:key``` para gerar a variável APP_KEY
 
-### 3. Executando o projeto
+### 3. Configure as variáveis de ambiente
+Antes de executar o projeto, precisamos gerar a variável APP_KEY que é utilizada pelo AdonisJS como chave secreta, e utilizamos para gerar nosso OTP.
+```
+node ace generate:key
+```
+
+### 4. Executando o projeto
 O projeto está preparado para rodar com o docker compose, então após ter criado o arquivo .env como mencionado acima, execute o comando:
 ```
 docker-compose up --build -d
@@ -61,6 +66,7 @@ Esse comando irá gerar a build do projeto, inciar o container com o banco de da
 
 ### Gerar OTP
 **Endpoint:** `POST /api/otp`
+
 Cria um token OTP para o email informado. Se já existir um token válido para o email, retorna o token existente.
 
 #### Request
@@ -76,7 +82,7 @@ Cria um token OTP para o email informado. Se já existir um token válido para o
 ```
 
 #### Response
-- Staus: `201`
+- Status: `201`
 - Body
 ```json
 {
@@ -86,6 +92,7 @@ Cria um token OTP para o email informado. Se já existir um token válido para o
 
 ### Validar OTP
 **Endpoint:** `POST /api/otp/validate`
+
 Valida se o token OTP informando juntamento ao e-mail é válido. Se o token for válido ele informa que foi válido e invalida na sequência.
 
 #### Request
@@ -112,7 +119,7 @@ Valida se o token OTP informando juntamento ao e-mail é válido. Se o token for
 
 Se o token já tiver expirado, ele retorna uma mensagem de erro.
 #### Response
-- Staus: `401`
+- Status: `401`
 - Body
 ```json
 {
