@@ -49,7 +49,7 @@ DB_DATABASE=otp_db           # Nome do banco de dados
 > ⚠️ **Importante**:  
 > O valor de `DB_HOST` deve **permanecer fixo** como `btg-pactual-otp-db`, pois este é o nome do container do banco definido no `docker-compose.yml`.
 
-### 3. Configure as variáveis de ambiente
+### 3. Criando a variável APP_KEY
 Antes de executar o projeto, precisamos gerar a variável APP_KEY que é utilizada pelo AdonisJS como chave secreta, e utilizamos para gerar nosso OTP.
 ```
 node ace generate:key
@@ -86,7 +86,7 @@ Cria um token OTP para o email informado. Se já existir um token válido para o
 - Body
 ```json
 {
-  "token": "1A2B3C"
+  "code": "1A2B3C"
 }
 ```
 
