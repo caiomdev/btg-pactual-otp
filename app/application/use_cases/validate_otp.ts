@@ -1,4 +1,4 @@
-import { OtpRepositoryInterface } from "#application/use_cases/otp_repository_interface"
+import { OtpRepositoryInterface } from "#application/contracts/otp_repository_interface"
 import { ValidateOtpDTO } from "#application/use_cases/validate_otp_dto"
 
 export class ValidateOtp {
