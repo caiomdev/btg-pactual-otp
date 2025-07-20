@@ -1,5 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { OtpStoreController } from '#interface/controller/otp_store_controller'
+import OtpStoreController from '#interface/controller/otp_store_controller'
 
 export class AdonisStoreControllerAdapter {
   constructor (private controller: OtpStoreController) {}

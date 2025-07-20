@@ -1,5 +1,5 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { OtpValidateController } from '#interface/controller/otp_validate_controller'
+import OtpValidateController from '#interface/controller/otp_validate_controller'
 
 export class AdonisValidateControllerAdapter {
   constructor (private controller: OtpValidateController) {}
