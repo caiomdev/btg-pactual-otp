@@ -29,6 +29,7 @@ cd btg-pactual-otp
 ```
 
 ### 2. Configure as variáveis de ambiente
+Crie um arquivo `.env` na raíz do projeto de acordo com as seguintes instruções:
 ```
 PORT=3333              # Variável padrão do AdonisJS para configurar a porta onde a API irá escutar as requisições
 HOST=0.0.0.0           # Variável padrão do AdonisJS para configurar o host da aplicação
@@ -50,9 +51,9 @@ DB_DATABASE=otp_db           # Nome do banco de dados
 > O valor de `DB_HOST` deve **permanecer fixo** como `btg-pactual-otp-db`, pois este é o nome do container do banco definido no `docker-compose.yml`.
 
 ### 3. Criando a variável APP_KEY
-Antes de executar o projeto, precisamos gerar a variável APP_KEY que é utilizada pelo AdonisJS como chave secreta, e utilizamos para gerar nosso OTP.
-```
-node ace generate:key
+Antes de executar o projeto, precisamos gerar a variável APP_KEY que é utilizada pelo AdonisJS como chave secreta, e utilizamos para gerar nosso OTP. Vamos instalar as dependências e gerar a chave:
+```shell
+npm install && node ace generate:key
 ```
 
 ### 4. Executando o projeto
