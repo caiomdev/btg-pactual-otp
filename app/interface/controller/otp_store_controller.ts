@@ -1,8 +1,8 @@
-import { FindOtpByEmail } from '#application/use_cases/FindOtpByEmail'
-import { GenerateOTP } from '#application/use_cases/GenerateOTP'
-import { GenerateOtpDTO } from '#application/use_cases/GenerateOtpDTO'
-import IHttpRequest from '#interface/IHttpRequest'
-import IHttpResponse from '#interface/IHttpResponse'
+import { FindOtpByEmail } from '#application/use_cases/find_otp_by_email'
+import { GenerateOTP } from '#application/use_cases/generate_otp'
+import { GenerateOtpDTO } from '#application/use_cases/generate_otp_dto'
+import IHttpRequest from '#interface/http_request_interface'
+import IHttpResponse from '#interface/http_response_interface'
 
 export default class OtpStoreController {
   constructor(

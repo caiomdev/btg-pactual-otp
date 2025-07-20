@@ -1,9 +1,9 @@
-import { OTP } from "#domain/entities/OTP"
-import { OtpRepository } from "#domain/repositories/OtpRepository"
+import { OTP } from "#domain/entities/opt"
+import { OtpRepositoryInterface } from "#interface/repositories/otp_repository_interface"
 import OtpModel from "#models/otp"
 import { DateTime } from "luxon"
 
-export class PostgresOtpRepository implements OtpRepository {
+export class PostgresOtpRepository implements OtpRepositoryInterface {
   async save(otp: OTP): Promise<OTP> {
     const insert = await OtpModel.create(this.toModel(otp))
     return this.toEntity(insert)

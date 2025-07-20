@@ -1,9 +1,9 @@
-import { OTP } from "#domain/entities/OTP"
-import { OtpRepository } from "#domain/repositories/OtpRepository"
+import { OTP } from "#domain/entities/opt"
+import { OtpRepositoryInterface } from "#application/use_cases/otp_repository_interface"
 import { FindOtpDTO } from "#application/use_cases/FindOtpByEmailDTO"
 
 export class FindOtpByEmail {
-  constructor(readonly otpRepository: OtpRepository) {}
+  constructor(readonly otpRepository: OtpRepositoryInterface) {}
 
   async execute(data: FindOtpDTO): Promise<OTP|null> {
     const otp = await this.otpRepository.findOtpByEmail(data.email)

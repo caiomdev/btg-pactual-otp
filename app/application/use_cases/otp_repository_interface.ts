@@ -1,6 +1,6 @@
-import { OTP } from "#domain/entities/OTP";
+import { OTP } from "#domain/entities/opt";
 
-export interface OtpRepository {
+export interface OtpRepositoryInterface {
   save(otp: OTP): Promise<OTP>
   findOtpByEmail(email: string): Promise<OTP|null>
   findOtpByEmailAndCode(email: string, code: string): Promise<OTP|null>

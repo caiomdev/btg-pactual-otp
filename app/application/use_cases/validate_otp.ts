@@ -1,8 +1,8 @@
-import { OtpRepository } from "#domain/repositories/OtpRepository"
-import { ValidateOtpDTO } from "#application/use_cases/ValidateOtpDTO"
+import { OtpRepositoryInterface } from "#application/use_cases/otp_repository_interface"
+import { ValidateOtpDTO } from "#application/use_cases/validate_otp_dto"
 
 export class ValidateOtp {
-  constructor(readonly otpRepository: OtpRepository) {}
+  constructor(readonly otpRepository: OtpRepositoryInterface) {}
 
   async execute(data: ValidateOtpDTO): Promise<void> {
     const otp = await this.otpRepository.findOtpByEmailAndCode(data.email, data.code)

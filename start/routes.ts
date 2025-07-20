@@ -7,14 +7,14 @@
 |
 */
 
-import { PostgresOtpRepository } from '#interface/repositories/PostgresOtpRepository'
-import { FindOtpByEmail } from '#application/use_cases/FindOtpByEmail'
-import { GenerateOTP } from '#application/use_cases/GenerateOTP'
+import { PostgresOtpRepository } from '#interface/repositories/postgres_otp_repository'
+import { FindOtpByEmail } from '#application/use_cases/find_otp_by_email'
+import { GenerateOTP } from '#application/use_cases/generate_otp'
 import router from '@adonisjs/core/services/router'
 import OtpStoreController from '#interface/controller/otp_store_controller' 
 import OtpValidateController from '#interface/controller/otp_validate_controller'
 import { AdonisStoreControllerAdapter } from '../app/infra/controllers/adonis_store_controller_adapter.js'
-import { ValidateOtp } from '#application/use_cases/ValidateOtp'
+import { ValidateOtp } from '#application/use_cases/validate_otp'
 import { AdonisValidateControllerAdapter } from '../app/infra/controllers/adonis_validate_controller_adapter.js'
 
 router.get('/', async () => {
