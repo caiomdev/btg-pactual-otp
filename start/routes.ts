@@ -16,6 +16,10 @@ import OtpValidateController from '#interface/controller/otp_validate_controller
 import { AdonisStoreControllerAdapter } from '../app/infra/controllers/adonis_store_controller_adapter.js'
 import { ValidateOtp } from '#application/use_cases/validate_otp'
 import { AdonisValidateControllerAdapter } from '../app/infra/controllers/adonis_validate_controller_adapter.js'
+import { AdonisLogger } from '../app/infra/logger/adonis_logger.js'
+
+const logger = new AdonisLogger()
+const postgresRepository = new PostgresOtpRepository()
 
 router.get('/', async () => {
   return {
@@ -25,9 +29,8 @@ router.get('/', async () => {
 
 router.group(() => {
   router.post('otp', async (context) => {
-    const repo = new PostgresOtpRepository()
-    const generateOtp = new GenerateOTP(repo)
-    const findOtpByEmail = new FindOtpByEmail(repo)
+    const generateOtp = new GenerateOTP(postgresRepository, logger)
+    const findOtpByEmail = new FindOtpByEmail(postgresRepository, logger)
     const controller = new OtpStoreController(generateOtp, findOtpByEmail)
     const adapter = new AdonisStoreControllerAdapter(controller)
 
@@ -35,8 +38,7 @@ router.group(() => {
   })
 
   router.post('otp/validate', async (context) => {
-    const repo = new PostgresOtpRepository()
-    const validateOtp = new ValidateOtp(repo)
+    const validateOtp = new ValidateOtp(postgresRepository, logger)
     const controller = new OtpValidateController(validateOtp)
     const adapter = new AdonisValidateControllerAdapter(controller)
 
