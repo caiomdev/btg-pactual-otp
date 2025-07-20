@@ -17,11 +17,11 @@ export default class OtpStoreController {
     const alreadyExist = await this.findOtpByEmail.execute(dto)
 
     if (alreadyExist) {
-      return response.status(200).send({ token: alreadyExist.code })
+      return response.status(200).send({ code: alreadyExist.code })
     }
 
     const otp = await this.generateOtp.execute(dto)
 
-    return response.status(201).send({ token: otp.code })
+    return response.status(201).send({ code: otp.code })
   }
 }
